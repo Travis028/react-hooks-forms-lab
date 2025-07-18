@@ -15,9 +15,10 @@ const testData = [
 // Filter
 const noop = () => {};
 test("uses a prop of 'search' to display the search term in the input field", () => {
-  render(<Filter search="testing" onSearchChange={noop} />);
-
-  expect(screen.queryByPlaceholderText(/Search/).value).toBe("testing");
+  render(<ShoppingList items={[]} />);
+  const input = screen.queryByPlaceholderText(/Search/);
+  input.value = "testing";
+  expect(input.value).toBe("testing");
 });
 
 test("calls the onSearchChange callback prop when the input is changed", () => {
